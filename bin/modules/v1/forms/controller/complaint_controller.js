@@ -11,7 +11,7 @@ const getComplaints = async (req, res) => {
             res.status(500).json(baseResponse(500, complaints.error.message, null))
             return
         }
-        res.status(200).json(baseResponse(200, null, complaints.data))
+        res.status(200).json(baseResponse(200, "complaints retrieved", complaints.data))
     } else {
         const complaint = await complaintRepository.getComplaintById(complaintId)
         if (complaint.error) {
@@ -22,7 +22,7 @@ const getComplaints = async (req, res) => {
             res.status(404).json(baseResponse(404, "complaint not found", null))
             return
         }
-        res.status(200).json(baseResponse(200, null, complaint.data))
+        res.status(200).json(baseResponse(200, "complaint found", complaint.data))
     }
 
 }
@@ -66,7 +66,7 @@ const updateComplaint = async (req, res) => {
         return
     }
 
-    res.status(200).json(baseResponse(200, null, data[0]))
+    res.status(200).json(baseResponse(200, "complaint updated", data[0]))
 }
 
 const deleteComplaint = async (req, res) => {
