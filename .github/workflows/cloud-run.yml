@@ -19,8 +19,6 @@ jobs:
           PROJECT_ID: boot-camp-gdsc
           credentials_json: ${{ secrets.GCP_CREDENTIALS }}
           export_default_credentials: true
-          supabase_url: ${{ secrets.SUPABASE_URL }}
-          supabase_key: ${{ secrets.SUPABASE_TOKEN }}
 
       - name: Configure docker for GCP
         run: gcloud auth configure-docker
@@ -33,6 +31,8 @@ jobs:
           tags: gcr.io/boot-camp-gdsc/harijs:latest
           build-args: |
             HTTP_PORT=8080
+            URL_SUPABASE=${{ secrets.SUPABASE_URL }}
+            TOKEN_SUPABASE=${{ secrets.SUPABASE_TOKEN }}
 
       - name: Deploy to Cloud Run
         uses: google-github-actions/deploy-cloudrun@v1
