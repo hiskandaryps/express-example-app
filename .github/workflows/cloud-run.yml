@@ -30,7 +30,7 @@ jobs:
           push: true
           tags: gcr.io/boot-camp-gdsc/harijs:latest
           build-args: |
-            PORT=8080
+            HTTP_PORT=8080
             URL_SUPABASE=${{ secrets.SUPABASE_URL }}
             TOKEN_SUPABASE=${{ secrets.SUPABASE_TOKEN }}
 
