@@ -42,9 +42,7 @@ jobs:
           region: asia-southeast2
           platform: managed
           allow-unauthenticated: true
-          port: 8080
           timeout: 3m
           env_vars: |
-              PORT=8080
               SUPABASE_URL=${{ secrets.SUPABASE_URL }}
               SUPABASE_TOKEN=${{ secrets.SUPABASE_TOKEN }}
